@@ -11,13 +11,19 @@ namespace Delegate
         {
             book _book = new book();
             _book.Name = "The Jungle Book";
-            _book.NameChanged = new NameChangedDelegate(nameChangedNotification);
+            //_book.NameChanged = new NameChangedDelegate(nameChangedNotification);
+            _book.NameChanged += nameChangedNotification;
+            _book.NameChanged += nameChangedNotification2;
             _book.Name = "Robinson Crusoe";
             Console.ReadLine();
         }
         static void nameChangedNotification(string oldValue, string NewValue)
         {
             Console.WriteLine("Name changed from {0} to {1}", oldValue, NewValue);
+        }
+        static void nameChangedNotification2(string oldValue, string NewValue)
+        {
+            Console.WriteLine("****************");
         }
     }
 }
